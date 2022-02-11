@@ -1,0 +1,38 @@
+import random
+
+word_list = ["word1", "word2", "word3"]
+
+word_num = random.randint(0, len(word_list)-1)
+unknown_word = list(word_list[word_num])
+print(unknown_word)
+
+unraveling_word = list("-" * len(unknown_word))
+
+num_of_errors = 0
+num_of_attempts = 3
+
+victory = False
+
+while True:
+    print(num_of_attempts)
+    print(num_of_errors)
+    print(unraveling_word)
+    input_symbol = input("Enter letter:")
+    if input_symbol in unknown_word:
+        number_symbol = unknown_word.index(input_symbol)
+        unraveling_word[number_symbol] = input_symbol
+    else:
+        num_of_errors += 1
+        if num_of_errors <= 3:
+            num_of_attempts = 3 - num_of_errors
+            print("You made a mistake. Remaining attempts:", str(num_of_attempts))
+        else:
+            None
+    if unraveling_word == unknown_word:
+        victory = True
+        print(unraveling_word)
+        print("You won!")
+    if num_of_attempts == 0 or victory:
+        if num_of_attempts == 0:
+            print("You lose!")
+        break
