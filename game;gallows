@@ -1,10 +1,10 @@
 import random
 
-word_list = ["word1", "word2", "word3"]
+word_list = ["word1", "word2", "word3"] #добавь несколько реальных слов
 
 word_num = random.randint(0, len(word_list)-1)
 unknown_word = list(word_list[word_num])
-print(unknown_word)
+print(unknown_word) # не показывай пользователю загаданное слово
 
 unraveling_word = list("-" * len(unknown_word))
 
@@ -14,9 +14,9 @@ num_of_attempts = 3
 victory = False
 
 while True:
-    print(num_of_attempts)
-    print(num_of_errors)
-    print(unraveling_word)
+    print(num_of_attempts) # добавь надпись о том что это за значение
+    print(num_of_errors) # добавь надпись о том что это за значение
+    print(unraveling_word) # добавь надпись о том что это за значение
     input_symbol = input("Enter letter:")
     if input_symbol in unknown_word:
         number_symbol = unknown_word.index(input_symbol)
@@ -26,7 +26,7 @@ while True:
         if num_of_errors <= 3:
             num_of_attempts = 3 - num_of_errors
             print("You made a mistake. Remaining attempts:", str(num_of_attempts))
-        else:
+        else: # можно else не указывать
             None
     if unraveling_word == unknown_word:
         victory = True
